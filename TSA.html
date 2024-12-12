@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Time Series Analysis in Machine learning </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .content-section img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Time Series Analysis </h1>
+    
+    <!-- Tab Navigation -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="introduction-tab" data-bs-toggle="tab" data-bs-target="#introduction" type="button" role="tab">Introduction</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Components-tab" data-bs-toggle="tab" data-bs-target="#components" type="button" role="tab">Components</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Time Series Models-tab" data-bs-toggle="tab" data-bs-target="#models" type="button" role="tab">Time Series Models</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Example-tab" data-bs-toggle="tab" data-bs-target="#Example" type="button" role="tab">Example</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="Quiz-tab" data-bs-toggle="tab" data-bs-target="#Quiz" type="button" role="tab">Quiz</button>
+      </li>
+    </ul>
+    
+    <!-- Tab Content -->
+    <div class="tab-content mt-4" id="myTabContent">
+      <!-- What is Time Series Analysis? -->
+      <div class="tab-pane fade show active" id="introduction" role="tabpanel">
+    <h2>Introduction</h2>
+    <p>
+        As future or professional Data Scientists or Data Analysts, we all know that data science is a very vast subject, and especially when it comes to time series analysis, we can understand that this topic is almost one-third of data science.
+    </p>
+    <p>
+        Here, we are going to learn what Time Series Analysis is, its key components, and an example of any one dataset (from Kaggle), along with an explanation of how they are done. We'll follow a step-by-step process to predict the future output of that particular dataset.
+    </p>
+    <p>
+        To answer the question of what Time Series Analysis is in simple words:
+    </p>
+    <blockquote>
+        <strong>"Time series analysis is like watching your favorite anime every day and trying to predict what might happen in the next episode based on what happened in the previous ones."</strong>
+    </blockquote>
+    <p>
+        (Note: This is my own imagination, so I’m sharing this just to make you understand in a fun and simple way.)
+    </p>
+    <p>
+        In real life, we do this to study temperatures, stock prices, rainfall, etc. Time Series Analysis helps in predicting future trends and behaviors. It can be a series of collected data such as regular or irregular intervals. In other words, with this data, we can predict what might happen in the next year, months, weeks, days, hours, or even minutes and seconds!
+    </p>
+
+    <img src="TSA pic 1.jpg" alt="Time Series Analysis Visualization">
+
+
+    <h3>Systematic Process to Analysis Data</h3>
+    <ul>
+        <li><strong>Data Collection:</strong> The relevant data points are gathered at consistent intervals, ensuring accuracy and completeness.</li>
+        <li><strong>Data Processing:</strong> Cleaning, organizing, and transforming the data to remove errors, handle missing values, and make it ready for analysis.</li>
+        <li><strong>Data Visualization:</strong> Using visualization techniques like line charts, scatter plots, or heatmaps to identify trends, patterns, seasonality, or irregularities.</li>
+        <li><strong>Stationarity/Non-Stationarity:</strong> Ensuring that the data is stationary (constant mean and variance over time) for easier modeling. If the data is non-stationary, transformations like differencing or detrending might be required.</li>
+        <li><strong>Time Series Modeling:</strong> Applying models like ARIMA (Autoregressive Integrated Moving Average), SARIMA (Seasonal ARIMA), or LSTMs to capture patterns and make predictions.</li>
+        <li><strong>Evaluation and Validation:</strong> Assessing model performance using train-test splits or cross-validation to ensure accurate and reliable predictions.</li>
+    </ul>
+     
+    <h3>Why Organizations Use TSA?</h3>
+    <p>TSA is a very crucial tool for almost all companies that are desperate to make better decisions based on data. By examining data points collected over consistent time intervals, businesses can identify patterns such as seasonality and long-term trends, enabling them to optimize operations, manage resources effectively, and anticipate market demands.</p>
+    <h4>For Example: Let's See What Walmart Does</h4>
+    <p>I believe everybody knows one of the world’s largest retail corporations, Walmart, which employs time series analysis for demand forecasting and inventory management by analyzing historical sales data.</p>
+    <p>In 2017, Walmart highlighted five ways it utilizes big data, including real-time workflows to monitor pharmacies, distribution centers, and stores, as well as e-commerce operations. Additionally, a 2019 study employed Long Short-Term Memory (LSTM) neural networks to forecast sales demand on Walmart's e-commerce platform, demonstrating the practical application of TSA methods to Walmart’s data.</p>
+    <p>So far, I believe we have a basic understanding of what time series analysis is. Now, next, we can look at what are its components and what are the time series analysis models. Please tap the “Key components” tab on the top of the page.</p>
+      
+    </div>
+
+      
+     <!-- Components-->
+      <div class="tab-pane fade" id="components" role="tabpanel">
+    <h3>Components of Time Series</h3>
+    <p>
+        In time series analysis, the components are the underlying structures or patterns that describe the overall behavior of the data over time.
+    </p>
+    <p>Now let’s see the main components of time series analysis:</p>
+    <ul>
+        <li>Trend</li>
+        <li>Seasonality</li>
+        <li>Cyclicals</li>
+        <li>Irregular/Random (Noise)</li>
+    </ul>
+    <p>
+      The image below will give you a clear understanding of how the components will be:
+    </p>
+    <img src="components old.jpg" alt="Components of Time Series">
+    <p>
+      This explains the whole concept of the components ; 
+    </p>
+    <img src="good.jpg" alt="Good Explanation of Components">
+
+    <h4>Trend</h4>
+    <p>
+        Trend is like the spine of time series. It indicates the general direction toward which something is heading over a long time. A trend is a common phenomenon in time series data when it tends to increase, decrease, or stay constant over time. It is what the data looks like overall when smaller fluctuations are disregarded.
+    </p>
+    <h5>Types of Trends:</h5>
+    <ul>
+        <li><strong>Upward Trend:</strong> When data is consistently growing over time. Example: The profits of a company were 300 lakh in 1983 and increased to 900 lakh in 2012.</li>
+        <li><strong>Decreasing Trend:</strong> When data is going down over time. Example: The decline of old technology like ringtones or pagers over the years.</li>
+        <li><strong>No Trend:</strong> When data stays the same or changes randomly.</li>
+    </ul>
+    <h5>How Can We Measure Trend Effect?</h5>
+    <p>There are several methods to identify and analyze trends:</p>
+    <ul>
+        <li><strong>Freehand Curve Method:</strong> A graphical method, where we plot the data and draw a smooth curve that represents the trend.</li>
+        <li><strong>Method of Selected Points:</strong> Choosing specific points from the dataset and using them to analyze the trend.</li>
+        <li><strong>Method of Semi-Averages:</strong> Dividing the dataset into two equal parts, calculating averages for each, and then determining the trend.</li>
+        <li><strong>Moving Averages Method:</strong> Smoothing the data by taking averages over a fixed period of time.</li>
+        <li><strong>Method of Least Squares:</strong> A mathematical method where a straight line is fit to best represent the data.</li>
+    </ul>
+    <img src="trend.jpg" alt="Trend Visualization">
+
+    <h4>Seasonality</h4>
+    <p>
+        Some seasons are cold, others are warm — we experience different seasonality. So do datasets. Seasonal effects show patterns that repeat over specific time periods like weeks, months, or even years. For example, sales of air coolers rise during the summer and fall during winter. This pattern repeats every year and is a clear example of seasonal effects.
+    </p>
+    <img src="seasonal.jpg" alt="Seasonality Visualization">
+
+    <h4>Cyclical Effect</h4>
+    <p>
+        When a business or industry goes through ups and downs, it may follow a cycle. Cyclical patterns have phases like:
+    </p>
+    <ul>
+        <li>Prosperity (growth)</li>
+        <li>Recession (slowdown)</li>
+        <li>Depression (bottoming out)</li>
+        <li>Recovery (comeback)</li>
+    </ul>
+    <p>
+        Cyclical effects repeat over time but not as regularly as seasonal effects. They are often linked to economic or business phases. For example, the number of employees in the software industry between 1988 and 2012 may show a cyclical pattern due to economic booms, recessions, and recoveries.
+    </p>
+    <img src="cycle.jpg" alt="Cyclical Effect Visualization">
+        <h4>Irregular Effect</h4>
+    <p>
+        Irregular effects are surprises or random events that happen unexpectedly. For example, the pandemic or extreme weather conditions like floods can cause irregular effects. These events are unpredictable but impact the data, causing spikes or dips.
+    </p>
+    <p>
+        Example: In the air cooler sales scenario, a sudden heatwave could lead to a spike in sales.
+    </p>
+</div>
+
+      
+      <!-- Time Series Models -->
+      <div class="tab-pane fade" id="models" role="tabpanel">
+    <h3>Time Series Models</h3>
+    <p>Time series models are analytical tools that predict the future based on past data points ordered chronologically. These models are classified into two types:</p>
+    <ul>
+        <li>Classical Models/Traditional Models</li>
+        <li>Advanced Models</li>
+    </ul>
+    <img src="TSA model.jpg" alt="Time Series Models">
+
+    <h4>Classical Models</h4>
+    <ul>
+        <li><strong>ARIMA:</strong> Ideal for stationary data, using past values (autoregression), differencing to stabilize trends, and moving averages to smooth noise.</li>
+        <li><strong>Exponential Smoothing:</strong> Includes Simple (SES), Double (Holt’s), and Triple (Holt-Winters) methods for forecasting with or without trends and seasonality.</li>
+        <li><strong>Vector Autoregression (VAR):</strong> Analyzes interdependencies between variables by considering their own lagged values and those of other variables.</li>
+        <li><strong>Seasonal Time Series Decomposition (STL):</strong> Breaks data into seasonal, trend, and residual components for deeper insights.</li>
+    </ul>
+
+    <h4>Advanced Models</h4>
+    <ul>
+        <li><strong>Tree-Based Methods:</strong> Random Forests and Gradient Boosting (e.g., XGBoost, LightGBM) handle non-linear relationships and high-dimensional datasets.</li>
+        <li><strong>CatBoost:</strong> Optimized for categorical and numerical time series with built-in handling for categorical variables.</li>
+        <li><strong>Neural Networks:</strong>
+            <ul>
+                <li><strong>Recurrent Neural Networks (RNNs):</strong> Capture temporal dependencies using feedback connections. Variants like LSTM and GRU address long sequences.</li>
+                <li><strong>Convolutional Neural Networks (CNNs):</strong> Detect local patterns or anomalies, often combined with RNNs for spatial-temporal features.</li>
+                <li><strong>Temporal Convolutional Networks (TCNs):</strong> Tailored for time series, offering better performance on long sequences.</li>
+                <li><strong>Transformers:</strong> Use self-attention mechanisms to identify dependencies across time steps. Examples include Time-Series Transformer and Informer.</li>
+            </ul>
+        </li>
+        <li><strong>Support Vector Machines (SVMs):</strong> Effective for regression and classification tasks, especially for datasets with clear decision boundaries.</li>
+    </ul>
+      </div>
+      
+      <!-- Example & Explanation -->
+      <div class="tab-pane fade" id="Example" role="tabpanel">
+        <h2>Example & Explanation</h2>
+        <p>
+          The Dataset I have taken for this assignment is the <strong>Time series Stock Price Dataset (from Kaggle)</strong>
+          (Note:I have done the coding in the goggle Colab so I will submit the file of that hence I will just give the conclution and explain what the predicted diagram is showing here)
+        </p> 
+         <p>
+          This is the link to the Kaggle Dataset: 
+          <a href="https://www.kaggle.com/datasets/karunyaronith/time-series-financial-portfolio-data" target="_blank">
+          Time Series Financial Portfolio Data
+          </a>
+        </p>
+        <p>
+          The outcomes of the LSTM model for time series prediction are displayed in this figure. The red dashed line shows the values that the LSTM model predicted, whereas the blue line shows the actual values from the test dataset (ground truth). Here, we can observe that the model is learning the overall temporal patterns because it can follow the overall trend of the real data. The model is averaging out abrupt changes, such as spikes or decreases, because the projections are smoother than the actual data. This occurs as a result of LSTMs' inherent tendency to prioritize long-term patterns and dependencies above transient noise.
+        </p>
+        <img src="code 1.jpg" alt="Predicted Output Visualization">
+        <img src="code 2.jpg" alt="Predicted Output Visualization">
+        <img src="code 3.jpg" alt="Predicted Output Visualization">
+        <p>
+          Furthermore, there are instances where it appears that the model predictions do not match the actual results. This can happen because sudden changes are more difficult to predict without more information, and LSTMs forecast the next value based on historical data. Due to the intrinsic unpredictability of some patterns in the data, a lack of training data, or a model with insufficient capacity (such as the number of neurons or layers), the model may not be able to capture these abrupt changes.
+        </p>
+        <p>
+          We could utilize extra engineering characteristics like rolling averages or volatility measurements(this is more advanced), add more neurons or layers to the LSTM to make it more complicated, or even include external elements (like market movements) to make the model better. The model's capacity to generalize may also be improved by utilizing a bigger dataset or experimenting with other hyperparameters, such as the learning rate or sequence length.
+        </p>
+        <img src="code 4.jpg" alt="Predicted Output Visualization">
+        <img src="code 5.jpg" alt="Predicted Output Visualization">
+        <img src="Predicted image.jpg" alt="Predicted Output Visualization">
+        <h3>Resources Taken From</h3>
+        <ul>
+          <li><a href="https://medium.com/p/82d614d462b0" target="_blank">Medium Article</a></li>
+          <li><a href="https://www.wallstreetmojo.com/time-series-analysis/" target="_blank">Wall Street Mojo: Time Series Analysis</a></li>
+          <li><a href="https://www.youtube.com/watch?v=_ZQ-lQrK9Rg" target="_blank">YouTube: Time Series Forecasting</a></li>
+          <li><a href="https://codeit.us/blog/machine-learning-time-series-forecasting" target="_blank">CodeIt Blog</a></li>
+          <li><a href="https://www.analyticsvidhya.com/blog/2021/10/a-comprehensive-guide-to-time-series-analysis/" target="_blank">Analytics Vidhya Guide</a></li>
+          <li><a href="https://www.geeksforgeeks.org/time-series-analysis-and-forecasting/" target="_blank">GeeksforGeeks: Time Series Analysis</a></li>
+        </ul>
+      </div>
+
+
+      <!-- Quiz time -->
+      <div class="tab-pane fade" id="Quiz" role="tabpanel" aria-labelledby="Quiz-tab">
+         <h2>Try to answer the questions :)</h2>
+         <p>What are the main components of a time series?</p>
+            <ul>
+                <li>A) Trend, Seasonality, Cyclic, Irregular</li>
+                <li>B) Linear, Polynomial, Logarithmic</li>
+                <li>C) Stationary, Non-stationary</li>
+                <li>D) None of the above</li>
+            </ul>
+         <p>What is the difference between additive and multiplicative time series models?</p>
+            <ul>
+                <li>A) Additive assumes components multiply; multiplicative assumes they add.</li>
+                <li>B) Additive combines components linearly; multiplicative combines them multiplicatively.</li>
+                <li>C) Additive is for stationary series; multiplicative is for non-stationary series.</li>
+                <li>D) None of the above</li>
+            </ul>
+           <p>Which of the following techniques can be used to make a time series stationary?</p>
+            <ul>
+                <li>A) Differencing</li>
+                <li>B) Seasonal decomposition</li>
+                <li>C) Log transformation</li>
+                <li>D) All of the above</li>
+            </ul>
+         <p>Which of the following techniques can be used to make a time series stationary?</p>
+            <ul>
+                <li>A) Differencing</li>
+                <li>B) Seasonal decomposition</li>
+                <li>C) Log transformation</li>
+                <li>D) All of the above</li>
+            </ul>
+
+         <p>Which Python libraries are commonly used for Time Series Analysis?</p>
+            <ul>
+                <li>A) pandas, matplotlib, statsmodels, scikit-learn</li>
+                <li>B) numpy, seaborn, tensorflow</li>
+                <li>C) PIL, OpenCV</li>
+                <li>D) None of the above</li>
+            </ul>
+         <p>If a time series has strong seasonal behavior, which model would be most appropriate?</p>
+             <ul>
+                 <li>A) ARIMA</li>
+                 <li>B) SARIMA</li>
+                 <li>C) Linear Regression</li>
+                 <li>D) None of the above</li>
+             </ul>
+         </li>
+       </div>    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
